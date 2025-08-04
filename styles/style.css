@@ -38,7 +38,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  width: 18rem;
+  width: 20rem;
   background-color: hsl(0, 0%, 100%);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -154,7 +154,7 @@ p.error-message {
   display: none;
   background-color: hsl(187, 24%, 22%);
   color: hsl(0, 0%, 100%);
-  width: 18rem;
+  width: 20rem;
   padding: 1rem;
   border-radius: 0.5rem;
 }

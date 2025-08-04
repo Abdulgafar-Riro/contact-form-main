@@ -61,7 +61,7 @@ body {
 .form-container {
   @include display;
   gap: 1rem;
-  width: 18rem;
+  width: 20rem;
   background-color: $White;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -183,7 +183,7 @@ p.error-message {
   display: none;
   background-color: $Grey-900;
   color: $White;
-  width: 18rem;
+  width: 20rem;
   padding: 1rem;
   border-radius: 0.5rem;
 
