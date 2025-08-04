@@ -15,17 +15,32 @@ body {
   padding: 2rem 0;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.main-container .attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.main-container .attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  width: 16rem;
+  width: 18rem;
   background-color: hsl(0, 0%, 100%);
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 0.5rem;
   margin: auto;
+  margin-bottom: 1rem;
 }
 
 form {
@@ -46,8 +61,7 @@ form .form-field {
   justify-content: center;
   gap: 0.3rem;
 }
-form .form-field input,
-form .form-field textarea {
+form .form-field .input-field {
   width: 100%;
   padding: 0.5rem 0;
   border-radius: 0.3rem;
@@ -55,31 +69,36 @@ form .form-field textarea {
   box-shadow: 0 0px 2px hsl(148, 38%, 91%);
   cursor: pointer;
 }
-form .form-field input:hover,
-form .form-field textarea:hover {
+form .form-field .input-field:hover, form .form-field .input-field:focus {
   box-shadow: 0 0px 2px hsl(169, 82%, 27%);
 }
-form .form-field textarea {
+form .form-field .input-field.error, form .form-field .input-field:invalid:focus {
+  border-color: hsl(0, 66%, 54%);
+}
+form textarea {
   height: 10rem;
 }
-form #required-description {
+
+#required-description {
   display: none;
   color: hsl(0, 66%, 54%);
 }
-form #required-description.visible {
+
+#required-description.visible {
   display: block;
 }
-form fieldset {
+
+fieldset {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
   border: none;
 }
-form fieldset legend {
+fieldset legend {
   padding-bottom: 0.3rem;
 }
-form fieldset .query {
+fieldset .query {
   width: 100%;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
@@ -88,16 +107,22 @@ form fieldset .query {
   box-shadow: 0 0px 2px hsl(148, 38%, 91%);
   cursor: pointer;
 }
-form fieldset .query:hover {
+fieldset .query:hover {
   box-shadow: 0px 0px 2px hsl(169, 82%, 27%);
   background-color: hsl(148, 38%, 91%);
 }
-form .consent-field {
+
+.consent-field {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
 }
-form button {
+.consent-field .consent {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.3rem;
@@ -107,8 +132,35 @@ form button {
   cursor: pointer;
 }
 
+p.error-message {
+  color: hsl(0, 66%, 54%);
+  font-size: 0.875rem;
+  display: none;
+}
+
 .feedback-message {
   display: none;
+  background-color: hsl(187, 24%, 22%);
+  color: hsl(0, 0%, 100%);
+  width: 18rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.feedback-message .success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.feedback-message .success img {
+  width: 1rem;
+}
+.feedback-message .success h2 {
+  font-size: 1rem;
+}
+.feedback-message p {
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  color: hsl(148, 38%, 91%);
 }
 
 @media (min-width: 40rem) {
@@ -120,6 +172,9 @@ form button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
+  }
+  form .form-field textarea {
+    height: 5rem;
   }
 }
 

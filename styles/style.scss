@@ -39,15 +39,30 @@ body {
   padding: 2rem 0;
 }
 
+.main-container {
+  @include display();
+  align-items: center;
+  justify-content: center;
+
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
 .form-container {
   @include display;
   gap: 1rem;
-  width: 16rem;
+  width: 18rem;
   background-color: $White;
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 0.5rem;
   margin: auto;
+  margin-bottom: 1rem;
 }
 
 form {
@@ -63,80 +78,120 @@ form {
     @include display;
     gap: 0.3rem;
 
-    input,
-    textarea {
+    .input-field {
       width: 100%;
       padding: 0.5rem 0;
       border-radius: 0.3rem;
       border: 1px solid $Green-200;
       box-shadow: 0 0px 2px $Green-200;
       cursor: pointer;
-    }
 
-    input:hover,
-    textarea:hover {
-      box-shadow: 0 0px 2px $Green-600;
-    }
+      &:hover,
+      &:focus {
+        box-shadow: 0 0px 2px $Green-600;
+      }
 
-    textarea {
-      height: 10rem;
-    }
-  }
-
-  #required-description {
-    display: none;
-    color: $Red;
-  }
-
-  #required-description.visible {
-    display: block;
-  }
-
-  fieldset {
-    @include display;
-    gap: 1rem;
-    border: none;
-
-    legend {
-      padding-bottom: 0.3rem;
-    }
-
-    .query {
-      width: 100%;
-      padding: 0.5rem 1rem;
-      margin-bottom: 0.5rem;
-      border-radius: 0.3rem;
-      border: 2px solid $Green-200;
-      box-shadow: 0 0px 2px $Green-200;
-      cursor: pointer;
-    }
-
-    .query:hover {
-      box-shadow: 0px 0px 2px $Green-600;
-      background-color: $Green-200;
+      // Input with validation error
+      &.error,
+      &:invalid:focus {
+        border-color: $Red;
+      }
     }
   }
 
-  .consent-field {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    // margin: 1rem 0;
+  textarea {
+    height: 10rem;
+  }
+}
+
+#required-description {
+  display: none;
+  color: $Red;
+}
+
+#required-description.visible {
+  display: block;
+}
+
+fieldset {
+  @include display;
+  gap: 1rem;
+  border: none;
+
+  legend {
+    padding-bottom: 0.3rem;
   }
 
-  button {
+  .query {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
     border-radius: 0.3rem;
-    background-color: $Green-600;
-    color: $White;
-    border: 1px solid $Green-600;
+    border: 2px solid $Green-200;
+    box-shadow: 0 0px 2px $Green-200;
     cursor: pointer;
   }
+
+  .query:hover {
+    box-shadow: 0px 0px 2px $Green-600;
+    background-color: $Green-200;
+  }
+}
+
+.consent-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  // margin: 1rem 0;
+
+  .consent {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: $Green-600;
+  color: $White;
+  border: 1px solid $Green-600;
+  cursor: pointer;
+}
+
+p.error-message {
+  color: $Red;
+  font-size: 0.875rem;
+  display: none;
 }
 
 .feedback-message {
   display: none;
+  background-color: $Grey-900;
+  color: $White;
+  width: 18rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  .success {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    img {
+      width: 1rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  p {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: $Green-200;
+  }
 }
 
 @media (min-width: 40rem) {
@@ -149,6 +204,12 @@ form {
     .query-type {
       @include display2;
       gap: 0.5rem;
+    }
+
+    .form-field {
+      textarea {
+        height: 5rem;
+      }
     }
   }
 }

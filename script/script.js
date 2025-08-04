@@ -1,59 +1,83 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
-  const inputs = form.querySelectorAll("input, textarea");
-  const feedbackMessage = document.querySelector(".feedback-message");
   const formContainer = document.querySelector(".form-container");
+  const feedbackMessage = document.querySelector(".feedback-message");
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    let formIsValid = true;
+    let isValid = true;
 
-    // Reset previous error messages
-    form.querySelectorAll('p[aria-hidden="true"]').forEach((p) => {
-      p.style.display = "none";
+    // Hide all previous errors
+    document.querySelectorAll(".error-message").forEach((error) => {
+      error.style.display = "none";
     });
 
-    inputs.forEach((input) => {
-      const fieldWrapper =
-        input.closest(".form-field") ||
-        input.closest(".query-type") ||
-        input.closest(".consent-field");
+    // Validate First Name
+    const firstName = document.getElementById("first-name");
+    if (firstName.value.trim() === "") {
+      showError("error-first-name");
+      isValid = false;
+    }
 
-      if (input.type === "radio") {
-        const radios = form.querySelectorAll('input[name="query"]');
-        const oneChecked = Array.from(radios).some((radio) => radio.checked);
-        if (!oneChecked) {
-          const error = fieldWrapper.querySelector('p[aria-hidden="true"]');
-          error.style.display = "block";
-          formIsValid = false;
-        }
-      } else if (input.type === "checkbox") {
-        if (!input.checked) {
-          const error = fieldWrapper.querySelector('p[aria-hidden="true"]');
-          error.style.display = "block";
-          formIsValid = false;
-        }
-      } else if (!input.value.trim()) {
-        const error = fieldWrapper.querySelector('p[aria-hidden="true"]');
-        error.style.display = "block";
-        formIsValid = false;
-      } else if (input.type === "email" && !validateEmail(input.value)) {
-        const error = fieldWrapper.querySelector('p[aria-hidden="true"]');
-        error.textContent = "Please enter a valid email address";
-        error.style.display = "block";
-        formIsValid = false;
-      }
-    });
+    // Validate Last Name
+    const lastName = document.getElementById("last-name");
+    if (lastName.value.trim() === "") {
+      showError("error-last-name");
+      isValid = false;
+    }
 
-    if (formIsValid) {
-      formContainer.style.display = "none";
+    // Validate Email
+    const email = document.getElementById("email");
+    if (!validateEmail(email.value)) {
+      showError("error-email");
+      isValid = false;
+    }
+
+    // Validate Query Type (radio)
+    const queryRadios = document.querySelectorAll('input[name="query"]');
+    const isQueryChecked = Array.from(queryRadios).some(
+      (radio) => radio.checked
+    );
+    if (!isQueryChecked) {
+      showError("error-query");
+      isValid = false;
+    }
+
+    // Validate Message
+    const message = document.getElementById("message");
+    if (message.value.trim() === "") {
+      showError("error-message");
+      isValid = false;
+    }
+
+    // Validate Consent
+    const consent = document.getElementById("consent");
+    if (!consent.checked) {
+      showError("error-consent");
+      isValid = false;
+    }
+
+    if (isValid) {
+      formContainer.style.display = "block";
       feedbackMessage.style.display = "block";
     }
   });
 
+  function showError(id) {
+    const errorElement = document.getElementById(id);
+    if (errorElement) {
+      errorElement.style.display = "block";
+      errorElement.classList.add("visible");
+      const input = errorElement.previousElementSibling;
+      if (input && input.classList.contains("input-field")) {
+        input.classList.add("error");
+      }
+    }
+  }
+
   function validateEmail(email) {
-    // Basic email validation
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email.trim());
   }
 });
