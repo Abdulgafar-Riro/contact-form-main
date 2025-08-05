@@ -40,7 +40,7 @@ body {
   gap: 1rem;
   width: 20rem;
   background-color: hsl(0, 0%, 100%);
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
   margin: auto;
   margin-bottom: 1rem;
@@ -75,7 +75,7 @@ form .form-field {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 form .form-field .input-field {
   width: 100%;
@@ -136,6 +136,7 @@ fieldset .query:hover {
 .consent-field .consent {
   display: flex;
   gap: 0.5rem;
+  padding: 1rem 0;
 }
 
 button {
@@ -183,7 +184,7 @@ p.error-message {
 
 @media (min-width: 40rem) {
   .form-container {
-    width: 40rem;
+    width: 30rem;
   }
   form .name,
   form .query-type {

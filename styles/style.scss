@@ -63,7 +63,7 @@ body {
   gap: 1rem;
   width: 20rem;
   background-color: $White;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
   margin: auto;
   margin-bottom: 1rem;
@@ -94,7 +94,7 @@ form {
 
   .form-field {
     @include display;
-    gap: 0.3rem;
+    gap: 0.5rem;
 
     .input-field {
       width: 100%;
@@ -164,6 +164,7 @@ fieldset {
   .consent {
     display: flex;
     gap: 0.5rem;
+    padding: 1rem 0;
   }
 }
 
@@ -215,7 +216,7 @@ p.error-message {
 
 @media (min-width: 40rem) {
   .form-container {
-    width: 40rem;
+    width: 30rem;
   }
 
   form {
