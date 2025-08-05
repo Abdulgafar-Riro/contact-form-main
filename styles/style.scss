@@ -101,7 +101,7 @@ form {
       padding: 0.5rem 0;
       border-radius: 0.3rem;
       border: 1px solid $Green-200;
-      box-shadow: 0 0px 2px $Green-200;
+      box-shadow: 0 0px 0px 1px $Green-200;
       cursor: pointer;
 
       &:hover {
@@ -215,7 +215,7 @@ p.error-message {
 
 @media (min-width: 40rem) {
   .form-container {
-    width: 30rem;
+    width: 40rem;
   }
 
   form {
