@@ -61,6 +61,10 @@ form {
   justify-content: center;
   gap: 1rem;
 }
+form input:focus,
+form textarea:focus {
+  outline-color: hsl(148, 38%, 91%);
+}
 form .name {
   display: flex;
   flex-direction: column;
@@ -81,7 +85,7 @@ form .form-field .input-field {
   box-shadow: 0 0px 2px hsl(148, 38%, 91%);
   cursor: pointer;
 }
-form .form-field .input-field:hover, form .form-field .input-field:focus {
+form .form-field .input-field:hover {
   box-shadow: 0 0px 2px hsl(169, 82%, 27%);
 }
 form .form-field .input-field.error, form .form-field .input-field:invalid:focus {

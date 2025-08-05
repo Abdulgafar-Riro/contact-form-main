@@ -60,7 +60,7 @@ This project reinforced my understanding of:
 - Accessible form design using `aria-*` attributes
 - Custom form validation with JavaScript
 - Dynamic styling using SCSS variables and mixins
-- Responsive design using `clamp()` and `media queries`
+- Responsive design using and `media queries`
 
 ```scss
 input:invalid {

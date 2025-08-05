@@ -82,6 +82,11 @@ form {
   @include display;
   gap: 1rem;
 
+  input:focus,
+  textarea:focus {
+    outline-color: $Green-200;
+  }
+
   .name {
     @include display;
     gap: 1rem;
@@ -99,8 +104,7 @@ form {
       box-shadow: 0 0px 2px $Green-200;
       cursor: pointer;
 
-      &:hover,
-      &:focus {
+      &:hover {
         box-shadow: 0 0px 2px $Green-600;
       }
 
